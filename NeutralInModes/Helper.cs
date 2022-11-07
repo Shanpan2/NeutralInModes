@@ -9,7 +9,7 @@ using System.Reflection;
 using UnhollowerBaseLib;
 using UnityEngine;
 
-namespace NeutralInModes
+namespace NeutralInModes.Helpers
 {
     public static class Helpers
     {
@@ -40,7 +40,7 @@ namespace NeutralInModes
             }
             return null;
         }
-        public static Sprite LoadSpriteFromResources(string name, float size)
+        public static Sprite LoadSpriteFromImages(string name, float size)
         {
 
             try
@@ -54,23 +54,28 @@ namespace NeutralInModes
             }
             return null;
         }
-
-        public static string cs(Color c, string s)
+        public static bool IsCrew(this PlayerControl p)
         {
-            return string.Format("<color=#{0:X2}{1:X2}{2:X2}{3:X2}>{4}</color>", ToByte(c.r), ToByte(c.g), ToByte(c.b), ToByte(c.a), s);
+            if (p != null && !p.Data.Role.IsImpostor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool IsImpostor(this PlayerControl p)
+        {
+            if (p != null && p.Data.Role.IsImpostor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        private static byte ToByte(float f)
-        {
-            f = Mathf.Clamp01(f);
-            return (byte)(f * 255);
-        }
-        public static PlayerControl playerById(byte id)
-        {
-            foreach (PlayerControl player in CachedPlayer.AllPlayers)
-                if (player.PlayerId == id)
-                    return player;
-            return null;
-        }
     }
 }

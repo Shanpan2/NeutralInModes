@@ -3,7 +3,7 @@ using BepInEx.Configuration;
 using BepInEx.IL2CPP;
 using HarmonyLib;
 using UnityEngine;
-using NeutralInModes;
+using NeutralInModes.Helpers;
 using TMPro;
 using System.Collections.Generic;
 

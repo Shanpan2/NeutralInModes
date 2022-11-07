@@ -18,8 +18,6 @@ namespace NeutralInModes
 
         public Harmony Harmony { get; } = new(Id);
         public static NeutralInModesPlugin Instance;
-        
-        public static int optionsPage = 0;
 
         public override void Load()
         {
